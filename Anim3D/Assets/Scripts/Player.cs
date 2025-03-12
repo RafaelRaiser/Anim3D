@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         {
             transform.Translate(movement.normalized * speed * Time.deltaTime, Space.World);
             animator.SetBool("walk", true);
-            transform.rotation = Quaternion.LookRotation(movement);
+            transform.forward = movement.normalized;
         }
         else
         {
@@ -63,11 +63,10 @@ public class Player : MonoBehaviour
     {
         isDancing = true;
         animator.SetBool("walk", false);
+        animator.ResetTrigger("idle");
         animator.SetTrigger("dance");
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         isDancing = false;
         animator.SetTrigger("idle");
     }
 }
-
-
