@@ -63,10 +63,10 @@ public class Player : MonoBehaviour
     {
         isDancing = true;
         animator.SetBool("walk", false);
-        animator.ResetTrigger("idle");
         animator.SetTrigger("dance");
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         isDancing = false;
         animator.SetTrigger("idle");
     }
 }
+
